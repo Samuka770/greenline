@@ -1,6 +1,7 @@
 import '../styles/sobre.css';
 import logoBranco from '../img/logo-transparente-branco.png';
 import bgSatelite from '../img/background-satelite.png';
+import { Link } from 'react-router-dom';
 
 export default function Sobre() {
   return (
@@ -105,9 +106,9 @@ export default function Sobre() {
         <p>
           Clique no botão abaixo para ver nossa apresentação formal.
         </p>
-        <a className="btn primary pill" href="/Apresentacao" target="_blank" rel="noopener">
+        <Link className="btn primary pill" to="/apresentacao">
           Apresentação
-        </a>
+        </Link>
       </section>
     </main>
   );

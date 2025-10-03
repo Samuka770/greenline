@@ -1,4 +1,5 @@
 import { useState, useMemo, useRef, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import projects from '../data/projects.json';
 import '../styles/projetos.css';
 import videoFallback from '../img/background-validacao.mp4';
@@ -36,7 +37,7 @@ export default function Projetos() {
         <div className="projetos-hero-inner reveal">
           <h1 className="projetos-title">Áreas em Preservação</h1>
           <p className="projetos-subtitle">Monitoradas em tempo Real!</p>
-          <a className="projetos-cta" href="registros">Conheça as áreas</a>
+          <Link className="projetos-cta" to="/registros">Conheça as áreas</Link>
         </div>
       </section>
 
@@ -126,7 +127,7 @@ export default function Projetos() {
                   {selected?.link && (
                     <a href={selected.link} target="_blank" rel="noopener noreferrer" className="area-detail-btn primary">Ver Página Pública</a>
                   )}
-                  <a href="/registros" className="area-detail-btn secondary">Ver Registro Completo</a>
+                  <Link to="/registros" className="area-detail-btn secondary">Ver Registro Completo</Link>
                 </div>
               </div>
             </div>

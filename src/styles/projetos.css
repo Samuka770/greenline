@@ -11,8 +11,8 @@
   overflow: visible;
   background: 
     radial-gradient(1200px 600px at 70% 20%, rgba(43,193,100,0.15) 0%, transparent 70%),
-    radial-gradient(800px 400px at 20% 80%, rgba(16,105,37,0.25) 0%, transparent 65%),
-    url('src/img/background-inicio.gif') center/cover no-repeat;
+  radial-gradient(800px 400px at 20% 80%, rgba(16,105,37,0.25) 0%, transparent 65%),
+  url('../img/background-inicio.gif') center/cover no-repeat;
 }
 
 .projetos-hero-inner {

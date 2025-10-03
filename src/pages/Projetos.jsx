@@ -1,6 +1,8 @@
 import { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 import projects from '../data/projects.json';
 import '../styles/projetos.css';
+import videoFallback from '../img/background-validacao.mp4';
+import logoGreensat from '../img/logo-greensat.png';
 
 export default function Projetos() {
   const [open, setOpen] = useState(false);
@@ -84,13 +86,13 @@ export default function Projetos() {
                   {/* Substituindo placeholder por vídeo fixo. Pode-se mapear vídeos específicos depois. */}
                   <video
                     className="area-satellite-image"
-                    src={selected?.video ? `src/videos/${selected.video}` : 'src/img/background-validacao.mp4'}
+                    src={selected?.video ? `src/videos/${selected.video}` : videoFallback}
                     autoPlay
                     muted
                     loop
                     playsInline
                     aria-label={`Visualização em vídeo ilustrativa da área selecionada`}
-                    onError={(e)=>{ e.currentTarget.onerror=null; e.currentTarget.src='src/img/background-validacao.mp4'; }}
+                    onError={(e)=>{ e.currentTarget.onerror=null; e.currentTarget.src=videoFallback; }}
                   />
                   {/* Overlay removido (estado e créditos) conforme solicitação */}
                 </div>
@@ -134,7 +136,7 @@ export default function Projetos() {
 
       {/* Introduction Section */}
       <section className="projetos-metodologia" role="region" aria-label="Introdução">
-        <video className="projetos-metodologia__video-bg" src="src/img/background-validacao.mp4" autoPlay loop muted playsInline />
+  <video className="projetos-metodologia__video-bg" src={videoFallback} autoPlay loop muted playsInline />
         <div className="projetos-metodologia__inner reveal">
           <div className="projetos-metodologia__content">
             <h2 className="projetos-metodologia__title">Conheça as áreas<br /><span>em preservação pela Greenline</span></h2>
@@ -146,7 +148,7 @@ export default function Projetos() {
             </div>
           </div>
           <div className="projetos-metodologia__logo">
-            <img src="src/img/logo-greensat.png" alt="Logo Greensat Technology" />
+            <img src={logoGreensat} alt="Logo Greensat Technology" />
             <div className="metodologia-hero__brand" />
           </div>
         </div>

@@ -1,7 +1,7 @@
 /* Extracts from original sobre.css, paths adjusted */
 .sobre-wrapper{max-width:1180px;margin:0 auto;padding:0 24px 60px;position:relative}
 .sobre-hero{position:relative;background:#0f241a;border:1px solid rgba(255,255,255,0.06);border-radius:28px;padding:46px clamp(1.2rem,3.5vw,3rem) 46px;overflow:hidden;box-shadow:0 14px 34px -10px rgba(0,0,0,.55);min-height:calc(100dvh - var(--nav-h,120px));display:flex;flex-direction:column;justify-content:center}
-.sobre-hero::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:linear-gradient(145deg,rgba(15,36,26,.92),rgba(15,36,26,.80) 45%,rgba(15,36,26,.72)), radial-gradient(900px 600px at 80% 25%,rgba(52,211,153,0.18),transparent 70%), url('src/img/mapa-mundi-arvore.png');background-size:cover,auto,cover;background-position:center,80% 25%,center;background-repeat:no-repeat,no-repeat,no-repeat;transform:scale(1.03);filter:contrast(1.05) brightness(.96)}
+.sobre-hero::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:linear-gradient(145deg,rgba(15,36,26,.92),rgba(15,36,26,.80) 45%,rgba(15,36,26,.72)), radial-gradient(900px 600px at 80% 25%,rgba(52,211,153,0.18),transparent 70%), url('../img/mapa-mundi-arvore.png');background-size:cover,auto,cover;background-position:center,80% 25%,center;background-repeat:no-repeat,no-repeat,no-repeat;transform:scale(1.03);filter:contrast(1.05) brightness(.96)}
 .sobre-hero>*{position:relative;z-index:1}
 .sobre-hero__grid{display:grid;grid-template-columns:1fr;gap:32px;align-items:start;max-width:940px}
 .sobre-hero__pre{font-size:.8rem;letter-spacing:.15em;font-weight:600;text-transform:uppercase;color:var(--acc);margin:0 0 18px;display:inline-flex;align-items:center;gap:10px}

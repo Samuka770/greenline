@@ -1,17 +1,20 @@
 import '../styles/index.css';
+import logoBranco from '../img/logo-transparente-branco.png';
+import videoValidacao from '../img/background-validacao.mp4';
+import logoGreensat from '../img/logo-greensat.png';
 
 export default function Home() {
   return (
     <main>
       <section id="inicio" className="hero" role="region" aria-label="Destaque">
         <div className="hero-inner reveal">
-          <img className="logo-inicio" src="src/img/logo-transparente-branco.png" alt="Logotipo Greenline" />
+          <img className="logo-inicio" src={logoBranco} alt="Logotipo Greenline" />
           <a className="cta" href="/sobre">Conheça a Greenline</a>
         </div>
       </section>
 
       <section className="metodologia-hero" role="region" aria-label="Metodologia">
-        <video className="metodologia-hero__video-bg" src="src/img/background-validacao.mp4" autoPlay loop muted playsInline />
+  <video className="metodologia-hero__video-bg" src={videoValidacao} autoPlay loop muted playsInline />
         <div className="metodologia-hero__inner reveal">
           <div className="metodologia-hero__content">
             <h2 className="metodologia-hero__title">
@@ -33,7 +36,7 @@ export default function Home() {
             </a>
           </div>
           <div className="metodologia-hero__logo">
-            <img src="src/img/logo-greensat.png" alt="Logo Greensat Technology" />
+            <img src={logoGreensat} alt="Logo Greensat Technology" />
             <div className="metodologia-hero__brand"></div>
           </div>
         </div>

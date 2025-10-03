@@ -1,4 +1,5 @@
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import logoNav from '../img/logo-nav.png';
 import { useEffect, useRef } from 'react';
 import '../styles/global.css';
 import '../styles/footer-greenline.css';
@@ -129,7 +130,7 @@ export default function RootLayout() {
       <div className="nav-wrap" ref={navWrapRef}>
         <div className="navbar" id="navbar" ref={barRef}>
           <a className="brand" href="/">
-            <img className="logo-nav" src="./src/img/logo-nav.png" alt="Logo Greenline" />
+            <img className="logo-nav" src={logoNav} alt="Logo Greenline" />
           </a>
           <nav className="desktop" id="deskNav" ref={navRef}>
             <NavLink className="nav-link" to="/" data-active={isActive('/') ? '' : null}>

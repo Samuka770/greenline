@@ -1,4 +1,6 @@
 import '../styles/sobre.css';
+import logoBranco from '../img/logo-transparente-branco.png';
+import bgSatelite from '../img/background-satelite.png';
 
 export default function Sobre() {
   return (
@@ -33,7 +35,7 @@ export default function Sobre() {
       <section id="empresa" className="empresa-hero reveal-fade" aria-label="Nossa origem" style={{ ['--d']: '.15s' }}>
         <div className="empresa-hero__inner">
           <div className="empresa-hero__top">
-            <img className="empresa-hero__logo" src="src/img/logo-transparente-branco.png" alt="Logo Greenline" />
+            <img className="empresa-hero__logo" src={logoBranco} alt="Logo Greenline" />
             <div className="empresa-hero__brand" aria-hidden="true"></div>
           </div>
           <div className="empresa-hero__grid">
@@ -78,7 +80,7 @@ export default function Sobre() {
       <section className="split-block" aria-labelledby="valores-title">
         <div className="split-media reveal-fade" style={{ ['--d']: '.25s' }}>
           <div className="frame">
-            <img src="src/img/background-satelite.png" alt="Imagem de floresta com gradiente" />
+            <img src={bgSatelite} alt="Imagem de floresta com gradiente" />
           </div>
         </div>
         <div className="split-copy reveal-fade" style={{ ['--d']: '.35s' }}>

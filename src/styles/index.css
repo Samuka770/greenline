@@ -1,7 +1,7 @@
 /* Home page styles copied/adapted */
 .hero{ position:relative; min-height:88vh; display:grid; place-items:center; text-align:center; overflow:visible; background:url('src/img/background-inicio.gif') center/cover no-repeat }
-.hero-inner{ max-width:900px; padding:56px 16px; color:#fff; background:#10271b }
-.logo-inicio{ max-width:min(520px,80vw); height:auto; position:relative; top:auto; left:auto; transform:none; margin:0 auto 24px auto; display:block }
+.hero-inner{ max-width:900px; padding:56px 16px; color:#fff; }
+.logo-inicio{ max-width:min(520px,80vw); height:auto; position:relative; top:auto; left:auto; transform:none; margin:0 auto 24px auto; display:block; background: transparent; }
 .hero p{ margin:0 0 8px; font-size:clamp(28px,6vw,56px); letter-spacing:2px; font-weight:800 }
 .hero .cta{ background:linear-gradient(120deg, #1a3a2a 0%, #10271b 100%); position:absolute; bottom:-110px; left:50%; transform:translate(-50%, 0); padding:14px 20px; border-radius:15px; text-decoration:none; color:#ffff; justify-content:center; width: clamp(200px,60vw,300px); box-shadow:0 10px 20px rgba(32,57,57,0.25); font-size:clamp(.9rem,2.2vw,1.1rem); transform-origin:center; border:1.5px solid rgba(43,193,100,0.35) }
 .hero .cta:hover{ background: linear-gradient(120deg, #1a3a2a 0%, #10271b 100%); color: #fff; box-shadow: 0 0 16px 1px #34d39980, 0 0 2px 1px #a7f3d080; filter: drop-shadow(0 0 1px #34d37b80); transform: translate(-50%, 0) scale(1.04); border-color: rgba(43, 193, 100, 0.55) }

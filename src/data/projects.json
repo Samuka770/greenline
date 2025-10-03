@@ -1,0 +1,562 @@
+[
+  {
+    "name": "Caure Grupo 1",
+    "video": "caure-grupo-1.mp4",
+    "link": "https://www.greenlineadm.com/caure1",
+    "country": "Brasil",
+    "state": "Roraima",
+    "biome": "Amazônia",
+    "vintage": "04/2020",
+    "credits": 9213434
+  },
+
+  {
+    "name": "Caure Grupo 2",
+    "video": "caure-grupo-2.mp4",
+    "link": "https://www.greenlineadm.com/caure2",
+    "country": "Brasil",
+    "state": "Roraima",
+    "biome": "Amazônia",
+    "vintage": "05/2019",
+    "credits": 8729869
+  },
+
+  {
+    "name": "Caure Grupo 3",
+    "video": "caure-grupo-3.mp4",
+    "link": "",
+    "country": "Brasil",
+    "state": "Roraima",
+    "biome": "Amazônia",
+    "vintage": "03/2022",
+    "credits": 9377872
+  },
+
+  {
+    "name": "Caure Grupo 4",
+    "video": "caure-grupo-4.mp4",
+    "link": "",
+    "country": "Brasil",
+    "state": "Roraima",
+    "biome": "Amazônia",
+    "vintage": "08/2021",
+    "credits": 8223595
+  },
+
+  {
+    "name": "Caure Grupo 5",
+    "video": "caure-grupo-5.mp4",
+    "link": "",
+    "country": "Brasil",
+    "state": "Roraima",
+    "biome": "Amazônia",
+    "vintage": "05/2025",
+    "credits": 4930293
+  },
+
+  {
+    "name": "BF TERRA Grupo 1",
+    "video": "bf-terra-grupo-1.mp4",
+    "link": "https://www.greenlineadm.com/bfterra1",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "08/2022",
+    "credits": 1586923
+  },
+
+  {
+    "name": "BF TERRA Grupo 2",
+    "video": "bf-terra-grupo-2.mp4",
+    "link": "https://www.greenlineadm.com/bfterra2",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "05/2019",
+    "credits": 8215471
+  },
+
+  {
+    "name": "FAZENDA TAMARANA",
+    "video": "fazenda-tamarana.mp4",
+    "link": "https://www.greenlineadm.com/agroambiental-vectra-ltda",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "10/2020",
+    "credits": 6981277
+  },
+
+  {
+    "name": "ARIPUANÃ",
+    "video": "aripuana.mp4",
+    "link": "https://www.greenlineadm.com/aripuana5101407",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "05/2024",
+    "credits": 4506540
+  },
+
+  {
+    "name": "MORRO AZUL /BELA AURORA/TOCA DO BOI/SANTA CRUZ",
+    "video": "morro-azul-bela-aurora-toca-do-boi-santa-cruz.mp4",
+    "link": "https://www.greenlineadm.com/ronan",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "08/2020",
+    "credits": 795697
+  },
+
+  {
+    "name": "SÃO MIGUEL/ SÃO MANUEL/ ENI/FAZENDA MATO GROSSO",
+    "video": "sao-miguel-sao-manuel-eni-fazenda-mato-grosso.mp4",
+    "link": "https://www.greenlineadm.com/vilmatogrosso",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "09/2022",
+    "credits": 6941015
+  },
+
+  {
+    "name": "FAZENDA PIAUÍ",
+    "video": "fazenda-piaui.mp4",
+    "link": "https://www.greenlineadm.com/piauifazenda",
+    "country": "Brasil",
+    "state": "Piauí",
+    "biome": "Mata Atlântica / Transição",
+    "vintage": "02/2023",
+    "credits": 3011191
+  },
+
+  {
+    "name": "4 FAZENDAS ARIPUANÃ",
+    "video": "4-fazendas-aripuana.mp4",
+    "link": "https://www.greenlineadm.com/midding",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "12/2021",
+    "credits": 3527942
+  },
+
+  {
+    "name": "FAZENDA NOVO HORIZONTE",
+    "video": "fazenda-novo-horizonte.mp4",
+    "link": "https://www.greenlineadm.com/novohorizonte",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "05/2018",
+    "credits": 6026333
+  },
+
+  {
+    "name": "FAZENDA VENTURA",
+    "video": "fazenda-ventura.mp4",
+    "link": "https://www.greenlineadm.com/ventura",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "08/2024",
+    "credits": 3581515
+  },
+
+  {
+    "name": "FAZENDA ESTRELA DA SERRA E GUANABARA",
+    "video": "fazenda-estrela-da-serra-e-guanabara.mp4",
+    "link": "https://www.greenlineadm.com/estrelaserraguanabara",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "04/2019",
+    "credits": 3108370
+  },
+
+  {
+    "name": "FAZENDA CANAJUBA, CRUMARÉ DO XINGU E RIACHO FUNDO",
+    "video": "fazenda-canajuba-crumare-do-xingu-e-riacho-fundo.mp4",
+    "link": "https://www.greenlineadm.com/canajuba-crumare-riachofundo",
+    "country": "Brasil",
+    "state": "Pará",
+    "biome": "Amazônia",
+    "vintage": "01/2021",
+    "credits": 2885481
+  },
+
+  {
+    "name": "FAZENDA SERRA GRANDE E SERRA BONITA",
+    "video": "fazenda-serra-grande-e-serra-bonita.mp4",
+    "link": "https://www.greenlineadm.com/grandebonita",
+    "country": "Brasil",
+    "state": "Bahia",
+    "biome": "Mata Atlântica / Transição",
+    "vintage": "06/2019",
+    "credits": 3839373
+  },
+
+  {
+    "name": "FAZENDA SANTA FÉ, TRES BARRAS, SÃO JORGE",
+    "video": "fazenda-santa-fe-tres-barras-sao-jorge.mp4",
+    "link": "https://www.greenlineadm.com/fe-tresbarras-jorge",
+    "country": "Brasil",
+    "state": "Goiás",
+    "biome": "Cerrado",
+    "vintage": "10/2024",
+    "credits": 2793616
+  },
+
+  {
+    "name": "FAZENDA SANTOS REIS",
+    "video": "fazenda-santos-reis.mp4",
+    "link": "https://www.greenlineadm.com/santosreis",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "04/2021",
+    "credits": 7582085
+  },
+
+  {
+    "name": "Fazenda Progresso",
+    "video": "fazenda-progresso.mp4",
+    "link": "https://www.greenlineadm.com/progresso",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "01/2024",
+    "credits": 8407026
+  },
+
+  {
+    "name": "FAZENDAS LAGOA DO PARAÍSO E MONTE CASTELO",
+    "video": "fazendas-lagoa-do-paraiso-e-monte-castelo.mp4",
+    "link": "https://www.greenlineadm.com/lagoaparaiso-montecastelo",
+    "country": "Brasil",
+    "state": "Rondônia",
+    "biome": "Amazônia",
+    "vintage": "09/2021",
+    "credits": 2974569
+  },
+
+  {
+    "name": "FAZENDA ESCONDIDA, DOS VIEIRA E MARANHÃO",
+    "video": "fazenda-escondida-dos-vieira-e-maranhao.mp4",
+    "link": "https://www.greenlineadm.com/escondida-vieiras-maranhao",
+    "country": "Brasil",
+    "state": "Maranhão",
+    "biome": "Mata Atlântica / Transição",
+    "vintage": "12/2023",
+    "credits": 9307990
+  },
+
+  {
+    "name": "FAZENDA POTUNÃ",
+    "video": "fazenda-potuna.mp4",
+    "link": "https://www.greenlineadm.com/agroflorestalpotuna",
+    "country": "Brasil",
+    "state": "Paraná",
+    "biome": "Mata Atlântica",
+    "vintage": "09/2023",
+    "credits": 5410698
+  },
+
+  {
+    "name": "FAZENDA PEDRA BRANCA",
+    "video": "fazenda-pedra-branca.mp4",
+    "link": "https://www.greenlineadm.com/pedrabranca",
+    "country": "Brasil",
+    "state": "Amazonas",
+    "biome": "Amazônia",
+    "vintage": "05/2022",
+    "credits": 9758896
+  },
+
+  {
+    "name": "MATRICULAS 7.220/ 9.307/ 9.455",
+    "video": "matriculas-7220-9307-9455.mp4",
+    "link": "https://www.greenlineadm.com/mats799",
+    "country": "Brasil",
+    "state": "Amazonas",
+    "biome": "Amazônia",
+    "vintage": "01/2023",
+    "credits": 9211808
+  },
+
+  {
+    "name": "MATRICULA 2898",
+    "video": "matricula-2898.mp4",
+    "link": "https://www.greenlineadm.com/2898",
+    "country": "Brasil",
+    "state": "Amazonas",
+    "biome": "Amazônia",
+    "vintage": "10/2024",
+    "credits": 6308530
+  },
+
+  {
+    "name": "MATRICULA 2947",
+    "video": "matricula-2947.mp4",
+    "link": "https://www.greenlineadm.com/2947",
+    "country": "Brasil",
+    "state": "Amazonas",
+    "biome": "Amazônia",
+    "vintage": "12/2024",
+    "credits": 159823
+  },
+
+  {
+    "name": "MATRICULA 2690",
+    "video": "matricula-2690.mp4",
+    "link": "https://www.greenlineadm.com/2690",
+    "country": "Brasil",
+    "state": "Amazonas",
+    "biome": "Amazônia",
+    "vintage": "12/2020",
+    "credits": 4899398
+  },
+
+  {
+    "name": "MATRICULA 2946",
+    "video": "matricula-2946.mp4",
+    "link": "https://www.greenlineadm.com/ala",
+    "country": "Brasil",
+    "state": "Amazonas",
+    "biome": "Amazônia",
+    "vintage": "03/2020",
+    "credits": 5866512
+  },
+
+  {
+    "name": "FAZENDA SANTA CECÍLIA",
+    "video": "fazenda-santa-cecilia.mp4",
+    "link": "https://www.greenlineadm.com/stacecilia",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "06/2022",
+    "credits": 2895344
+  },
+
+  {
+    "name": "FAZENDA MACACO",
+    "video": "fazenda-macaco.mp4",
+    "link": "https://www.greenlineadm.com/macaco",
+    "country": "Brasil",
+    "state": "Amazonas",
+    "biome": "Amazônia",
+    "vintage": "06/2020",
+    "credits": 2598636
+  },
+
+  {
+    "name": "CAMPO OURO",
+    "video": "campo-ouro.mp4",
+    "link": "https://www.greenlineadm.com/campoouro",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "09/2020",
+    "credits": 8920415
+  },
+
+  {
+    "name": "FAZENDA VITÓRIA I e II",
+    "video": "fazenda-vitoria-i-e-ii.mp4",
+    "link": "https://www.greenlineadm.com/vitoria1e2",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "11/2019",
+    "credits": 2964541
+  },
+
+  {
+    "name": "Fazenda Dom Pedrito",
+    "video": "fazenda-dom-pedrito.mp4",
+    "link": "https://www.greenlineadm.com/dompedrito",
+    "country": "Brasil",
+    "state": "Rio Grande do Sul",
+    "biome": "Mata Atlântica",
+    "vintage": "03/2018",
+    "credits": 6627480
+  },
+
+  {
+    "name": "Fazenda Paulinea E DOS AMIGOS",
+    "video": "fazenda-paulinea-e-dos-amigos.mp4",
+    "link": "https://www.greenlineadm.com/amigospaulinea",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "03/2023",
+    "credits": 3582321
+  },
+
+  {
+    "name": "9 areas Ernesto",
+    "video": "9-areas-ernesto.mp4",
+    "link": "https://www.greenlineadm.com/ternes",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "08/2021",
+    "credits": 9509994
+  },
+
+  {
+    "name": "Espora de prata II",
+    "video": "espora-de-prata-ii.mp4",
+    "link": "https://www.greenlineadm.com/esporaprata2",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "04/2022",
+    "credits": 6939943
+  },
+
+  {
+    "name": "Fazenda São Luiz",
+    "video": "fazenda-sao-luiz.mp4",
+    "link": "https://www.greenlineadm.com/saoluiz",
+    "country": "Brasil",
+    "state": "Maranhão",
+    "biome": "Mata Atlântica / Transição",
+    "vintage": "04/2025",
+    "credits": 9628305
+  },
+
+  {
+    "name": "Fazenda Gurupi",
+    "video": "fazenda-gurupi.mp4",
+    "link": "https://www.greenlineadm.com/gurupi",
+    "country": "Brasil",
+    "state": "Tocantins",
+    "biome": "Cerrado",
+    "vintage": "02/2024",
+    "credits": 6685749
+  },
+
+  {
+    "name": "Ponta da Pedra",
+    "video": "ponta-da-pedra.mp4",
+    "link": "https://www.greenlineadm.com/pontapedra",
+    "country": "Brasil",
+    "state": "Pará",
+    "biome": "Amazônia",
+    "vintage": "01/2024",
+    "credits": 8796805
+  },
+
+  {
+    "name": "LOTE 91",
+    "video": "lote-91.mp4",
+    "link": "https://www.greenlineadm.com/lote91",
+    "country": "Brasil",
+    "state": "Pará",
+    "biome": "Amazônia",
+    "vintage": "08/2019",
+    "credits": 7764549
+  },
+
+  {
+    "name": "LOTE 103 - BELO MONTE",
+    "video": "lote-103-belo-monte.mp4",
+    "link": "https://www.greenlineadm.com/lote103",
+    "country": "Brasil",
+    "state": "Pará",
+    "biome": "Amazônia",
+    "vintage": "11/2020",
+    "credits": 1746880
+  },
+
+  {
+    "name": "LOTE 45",
+    "video": "lote-45.mp4",
+    "link": "https://www.greenlineadm.com/lote45",
+    "country": "Brasil",
+    "state": "Pará",
+    "biome": "Amazônia",
+    "vintage": "01/2020",
+    "credits": 7173196
+  },
+
+  {
+    "name": "LOTE 46",
+    "video": "lote-46.mp4",
+    "link": "https://www.greenlineadm.com/lote46",
+    "country": "Brasil",
+    "state": "Pará",
+    "biome": "Amazônia",
+    "vintage": "07/2023",
+    "credits": 7855462
+  },
+
+  {
+    "name": "FAZENDA CUELHO",
+    "video": "fazenda-cuelho.mp4",
+    "link": "https://www.greenlineadm.com/cuelho",
+    "country": "Brasil",
+    "state": "Goiás",
+    "biome": "Cerrado",
+    "vintage": "07/2022",
+    "credits": 9062555
+  },
+
+  {
+    "name": "SANTA CORINA",
+    "video": "santa-corina.mp4",
+    "link": "https://www.greenlineadm.com/santacorina",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "06/2018",
+    "credits": 3784688
+  },
+
+  {
+    "name": "SETE RANCHOS",
+    "video": "sete-ranchos.mp4",
+    "link": "https://www.greenlineadm.com/seteranchos",
+    "country": "Brasil",
+    "state": "Goiás",
+    "biome": "Cerrado",
+    "vintage": "06/2023",
+    "credits": 3217428
+  },
+
+  {
+    "name": "Mats 30.882, 29.970",
+    "video": "mats-30882-29970.mp4",
+    "link": "https://www.greenlineadm.com/ranchoibira",
+    "country": "Brasil",
+    "state": "Mato Grosso",
+    "biome": "Amazônia",
+    "vintage": "02/2020",
+    "credits": 6846088
+  },
+
+  {
+    "name": "SITIO SÃO BENTO",
+    "video": "sitio-sao-bento.mp4",
+    "link": "https://www.greenlineadm.com/saobento",
+    "country": "Brasil",
+    "state": "Minas Gerais",
+    "biome": "Cerrado / Mata Atlântica",
+    "vintage": "09/2022",
+    "credits": 7741190
+  },
+
+  {
+    "name": "FAZENDAS BUQUEIRÃO ARCO IRIS E CATINGUEIRO",
+    "video": "fazendas-buqueirao-arco-iris-e-catingueiro.mp4",
+    "link": "https://www.greenlineadm.com/aecio",
+    "country": "Brasil",
+    "state": "Ceará",
+    "biome": "Mata Atlântica / Transição",
+    "vintage": "03/2021",
+    "credits": 8236564
+  }
+]

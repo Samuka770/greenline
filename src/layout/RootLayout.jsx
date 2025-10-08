@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import logoNav from '../img/logo-nav.png';
 import { useEffect, useRef } from 'react';
 import '../styles/global.css';
@@ -118,6 +118,23 @@ function useNavEffects() {
     return () => observer.disconnect();
   }, [location]);
 
+  // ESC key closes mobile menu for accessibility
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        const mob = document.getElementById('mobMenu');
+        const btn = document.getElementById('hamb');
+        const overlay = document.getElementById('navOverlay');
+        mob?.classList.remove('open');
+        btn?.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+        overlay?.classList.remove('show');
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
+
   return { navRef, indicatorRef, barRef, navWrapRef };
 }
 
@@ -127,11 +144,11 @@ export default function RootLayout() {
   const isActive = (path) => location.pathname === path;
   return (
     <div>
-      <div className="nav-wrap" ref={navWrapRef}>
+      <div className="nav-wrap" id="navWrap" ref={navWrapRef}>
         <div className="navbar" id="navbar" ref={barRef}>
-          <a className="brand" href="/">
+          <Link className="brand" to="/">
             <img className="logo-nav" src={logoNav} alt="Logo Greenline" />
-          </a>
+          </Link>
           <nav className="desktop" id="deskNav" ref={navRef}>
             <NavLink className="nav-link" to="/" data-active={isActive('/') ? '' : null}>
               <span className="ink"></span>
@@ -168,55 +185,139 @@ export default function RootLayout() {
             id="hamb"
             aria-expanded="false"
             aria-controls="mobMenu"
+            aria-label="Abrir menu"
             title="Menu"
             onClick={() => {
               const mob = document.getElementById('mobMenu');
               const btn = document.getElementById('hamb');
+              const overlay = document.getElementById('navOverlay');
+              const navWrap = document.getElementById('navWrap');
+              const navBar = document.getElementById('navbar');
               const open = mob?.classList.toggle('open');
-              if (btn) btn.setAttribute('aria-expanded', String(!!open));
+              if (btn) {
+                btn.setAttribute('aria-expanded', String(!!open));
+                btn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+              }
+              document.body.classList.toggle('menu-open', !!open);
+              overlay?.classList.toggle('show', !!open);
+              navWrap?.classList.toggle('menu-opened', !!open);
+              navBar?.classList.remove('hidden');
+              navBar?.classList.add('showing');
+              // garantir interatividade do header
+              navWrap?.classList.remove('collapsed');
             }}
           >
-            ☰
+            <span className="bar" aria-hidden="true"></span>
+            <span className="bar" aria-hidden="true"></span>
+            <span className="bar" aria-hidden="true"></span>
           </button>
         </div>
         <div className="mobile" id="mobMenu">
           <nav>
-            <NavLink className="nav-link" to="/" data-active={isActive('/') ? '' : null}>
+            <NavLink className="nav-link" to="/" data-active={isActive('/') ? '' : null} onClick={() => {
+              const mob = document.getElementById('mobMenu');
+              const btn = document.getElementById('hamb');
+              const overlay = document.getElementById('navOverlay');
+              const navWrap = document.getElementById('navWrap');
+              mob?.classList.remove('open');
+              if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label','Abrir menu'); }
+              document.body.classList.remove('menu-open');
+              overlay?.classList.remove('show');
+              navWrap?.classList.remove('menu-opened');
+              navWrap?.classList.remove('collapsed');
+            }}>
               Início
             </NavLink>
-            <a
-              className="nav-link"
-              href="https://www.greenlineadm.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Análises
-            </a>
+            <NavLink className="nav-link" to="/projetos" data-active={isActive('/projetos') ? '' : null} onClick={() => {
+              const mob = document.getElementById('mobMenu');
+              const btn = document.getElementById('hamb');
+              const overlay = document.getElementById('navOverlay');
+              const navWrap = document.getElementById('navWrap');
+              mob?.classList.remove('open');
+              if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label','Abrir menu'); }
+              document.body.classList.remove('menu-open');
+              overlay?.classList.remove('show');
+              navWrap?.classList.remove('menu-opened');
+              navWrap?.classList.remove('collapsed');
+            }}>
+              Projetos
+            </NavLink>
+            {/* Link 'Análises' removido do menu mobile conforme solicitado */}
             <NavLink
               className="nav-link"
               to="/credito-de-carbono"
               data-active={isActive('/credito-de-carbono') ? '' : null}
+              onClick={() => {
+                const mob = document.getElementById('mobMenu');
+                const btn = document.getElementById('hamb');
+                const overlay = document.getElementById('navOverlay');
+                const navWrap = document.getElementById('navWrap');
+                mob?.classList.remove('open');
+                if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label','Abrir menu'); }
+                document.body.classList.remove('menu-open');
+                overlay?.classList.remove('show');
+                navWrap?.classList.remove('menu-opened');
+                navWrap?.classList.remove('collapsed');
+              }}
             >
               Crédito de Carbono
             </NavLink>
-            <NavLink className="nav-link" to="/sobre" data-active={isActive('/sobre') ? '' : null}>
+            <NavLink className="nav-link" to="/sobre" data-active={isActive('/sobre') ? '' : null} onClick={() => {
+              const mob = document.getElementById('mobMenu');
+              const btn = document.getElementById('hamb');
+              const overlay = document.getElementById('navOverlay');
+              const navWrap = document.getElementById('navWrap');
+              mob?.classList.remove('open');
+              if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label','Abrir menu'); }
+              document.body.classList.remove('menu-open');
+              overlay?.classList.remove('show');
+              navWrap?.classList.remove('menu-opened');
+              navWrap?.classList.remove('collapsed');
+            }}>
               Sobre
             </NavLink>
-            <NavLink className="nav-link" to="/contato" data-active={isActive('/contato') ? '' : null}>
+            <NavLink className="nav-link" to="/contato" data-active={isActive('/contato') ? '' : null} onClick={() => {
+              const mob = document.getElementById('mobMenu');
+              const btn = document.getElementById('hamb');
+              const overlay = document.getElementById('navOverlay');
+              const navWrap = document.getElementById('navWrap');
+              mob?.classList.remove('open');
+              if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.classList.remove('is-open'); btn.setAttribute('aria-label','Abrir menu'); }
+              document.body.classList.remove('menu-open');
+              overlay?.classList.remove('show');
+              navWrap?.classList.remove('menu-opened');
+              navWrap?.classList.remove('collapsed');
+            }}>
               Contato
             </NavLink>
           </nav>
         </div>
+        <div
+          className="nav-overlay"
+          id="navOverlay"
+          aria-hidden="true"
+          onClick={() => {
+            const mob = document.getElementById('mobMenu');
+            const btn = document.getElementById('hamb');
+            const overlay = document.getElementById('navOverlay');
+            const navWrap = document.getElementById('navWrap');
+            mob?.classList.remove('open');
+            if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label','Abrir menu'); }
+            document.body.classList.remove('menu-open');
+            overlay?.classList.remove('show');
+            navWrap?.classList.remove('menu-opened');
+          }}
+        ></div>
       </div>
 
       <Outlet />
 
       <footer className="site-footer reveal" role="contentinfo">
         <nav className="footer-links" aria-label="Links do rodapé">
-          <a href="/">Início</a>
-          <a href="/credito-de-carbono">Crédito de Carbono</a>
-          <a href="/sobre">Sobre</a>
-          <a href="/contato">Contato</a>
+          <NavLink to="/">Início</NavLink>
+          <NavLink to="/credito-de-carbono">Crédito de Carbono</NavLink>
+          <NavLink to="/sobre">Sobre</NavLink>
+          <NavLink to="/contato">Contato</NavLink>
         </nav>
         <div className="footer-copyright">© 2025 Greenline Associates</div>
       </footer>

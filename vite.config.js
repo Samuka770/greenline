@@ -11,5 +11,33 @@ export default defineConfig(({ mode }) => {
     define: {
       __SITE_NAME__: JSON.stringify(env.VITE_SITE_NAME || 'Greenline'),
     },
+    build: {
+      minify: 'esbuild',
+      target: 'es2020',
+      sourcemap: false,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            react: ['react', 'react-dom', 'react-router-dom'],
+          },
+        },
+      },
+    },
+    esbuild: {
+      drop: env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
+    },
+    // Dev-only proxy: forward /api calls to a published backend to avoid 404 in Vite dev
+    server: {
+      proxy: env.VITE_API_PROXY_TARGET
+        ? {
+            '/api': {
+              target: env.VITE_API_PROXY_TARGET,
+              changeOrigin: true,
+              // keep the same path (/api/send-contact)
+              rewrite: (p) => p,
+            },
+          }
+        : undefined,
+    },
   }
 })

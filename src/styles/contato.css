@@ -1,6 +1,6 @@
 /* Key styles from original contato.css */
 .contato-wrapper{ max-width:1180px; margin:0 auto; padding:40px 18px }
-.contato-hero{ background:#10271b; border:1px solid rgba(255,255,255,.06); border-radius:18px; padding:48px 42px; box-shadow:0 10px 28px rgba(0,0,0,.4); position:relative; overflow:hidden }
+.contato-hero{ background:color-mix(in oklab, var(--night) 85%, var(--office-green) 15%); border:1px solid rgba(255,255,255,.06); border-radius:18px; padding:48px 42px; box-shadow:0 10px 28px rgba(0,0,0,.4); position:relative; overflow:hidden }
 .contato-hero::before{ content:""; position:absolute; inset:0; background:radial-gradient(900px 600px at 85% 20%,rgba(52,211,153,0.15),transparent 70%),linear-gradient(135deg,rgba(255,255,255,0.04),transparent 60%); pointer-events:none }
 .contato-grid{ display:grid; grid-template-columns:1fr 480px; gap:56px; align-items:start }
 @media (max-width:1080px){ .contato-grid{ grid-template-columns:1fr 440px; gap:48px } }
@@ -11,14 +11,14 @@
 .contato-points li{ background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); padding:12px 14px; border-radius:12px; line-height:1.4; font-size:.95rem }
 .contato-points strong{ color:var(--acc); font-weight:600 }
 .contato-meta{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:22px; margin-top:8px }
-.meta-bloco{ background:#10271b; border:1px solid rgba(255,255,255,0.06); padding:18px 22px; border-radius:16px; min-width:200px; backdrop-filter:blur(4px) saturate(140%) }
+.meta-bloco{ background:color-mix(in oklab, var(--night) 88%, var(--office-green) 12%); border:1px solid rgba(255,255,255,0.06); padding:18px 22px; border-radius:16px; min-width:200px; backdrop-filter:blur(4px) saturate(140%) }
 .link{ color:var(--acc); text-decoration:none }
 .link:hover{ text-decoration:underline }
 .contato-form-wrapper{ position:relative }
-.contato-form{ background:rgba(3,41,16,0.804); border:1px solid rgba(255,255,255,0.129); box-shadow:0 10px 30px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.05); backdrop-filter:blur(12px) saturate(160%); padding:34px 32px 40px; border-radius:20px; display:flex; flex-direction:column; gap:18px; min-height:100%; position:relative }
+.contato-form{ background:color-mix(in oklab, var(--night) 88%, var(--office-green) 12%); border:1px solid rgba(255,255,255,0.129); box-shadow:0 10px 30px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.05); backdrop-filter:blur(12px) saturate(160%); padding:34px 32px 40px; border-radius:20px; display:flex; flex-direction:column; gap:18px; min-height:100%; position:relative }
 .form-title{ margin:0; font-size:1.6rem; font-weight:600 }
 .form-desc{ margin:0 0 6px; color:var(--muted); font-size:.9rem }
-.field-group{ display:flex; flex-direction:column; gap:6px }
+.field-group{ display:flex; flex-direction:column; gap:6px; }
 .field-row{ display:flex; gap:18px }
 .field-row.compact{ align-items:flex-start }
 /* Allow columns to shrink inside flex row to avoid overlap */
@@ -33,4 +33,4 @@ textarea{ min-height:150px }
 .check input{ width:18px; height:18px; margin-top:1px; flex-shrink:0; cursor:pointer }
 .btn.full{ width:100%; justify-content:center; font-size:1rem; padding:16px 20px; border-radius:14px }
 .error{ min-height:16px; font-size:.7rem; color:#f87171; font-weight:600; letter-spacing:.5px; text-transform:uppercase }
-.form-success{ margin-top:16px; background:linear-gradient(120deg, #1a3a2a 0%, #10271b 100%); color:#062322; font-weight:600; padding:14px 16px; border-radius:14px; font-size:.9rem; box-shadow:0 6px 16px rgba(0,0,0,0.4) }
+.form-success{ margin-top:16px; background:linear-gradient(120deg, var(--forest-green) 0%, color-mix(in oklab, var(--office-green) 70%, var(--forest-green)) 100%); color:#062322; font-weight:600; padding:14px 16px; border-radius:14px; font-size:.9rem; box-shadow:0 6px 16px rgba(0,0,0,0.4) }

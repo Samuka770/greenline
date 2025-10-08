@@ -7,19 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "projects:list": "node scripts/projects.mjs list",
-    "projects:get": "node scripts/projects.mjs get",
-    "projects:add": "node scripts/projects.mjs add",
-    "projects:update": "node scripts/projects.mjs update",
-    "projects:rename": "node scripts/projects.mjs rename",
-    "projects:remove": "node scripts/projects.mjs remove",
-    "projects:inc": "node scripts/projects.mjs inc"
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^6.26.2"
+    "react-router-dom": "^6.26.2",
+    "resend": "^6.1.2",
+    "vercel": "^48.2.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

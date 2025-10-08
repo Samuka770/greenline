@@ -92,6 +92,7 @@ export default function Projetos() {
                     muted
                     loop
                     playsInline
+                    preload="metadata"
                     aria-label={`Visualização em vídeo ilustrativa da área selecionada`}
                     onError={(e)=>{ e.currentTarget.onerror=null; e.currentTarget.src=videoFallback; }}
                   />

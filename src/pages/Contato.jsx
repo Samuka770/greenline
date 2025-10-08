@@ -1,17 +1,19 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import '../styles/contato.css';
+import politicaPrivacidade from '../pdfs/politica_de_privacidade_greenline.pdf';
 
 export default function Contato() {
   const formRef = useRef(null);
   const successRef = useRef(null);
   const errorRef = useRef(null);
+  const [sending, setSending] = useState(false);
 
   useEffect(() => {
     const form = formRef.current;
     const success = successRef.current;
     const error = errorRef.current;
     if (!form) return;
-    const requiredFields = ['nome', 'email', 'mensagem', 'lgpd'];
+  const requiredFields = ['nome', 'email', 'assunto', 'mensagem', 'lgpd'];
 
     function setError(name, msg) {
       const span = form.querySelector(`[data-error-for="${name}"]`);
@@ -22,7 +24,7 @@ export default function Contato() {
     function clearErrors() {
       requiredFields.forEach((f) => setError(f, ''));
     }
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
       e.preventDefault();
       clearErrors();
       if (success) success.hidden = true;
@@ -45,17 +47,77 @@ export default function Contato() {
         ok = false;
         missing.push('email');
       }
-      if (ok) {
-        form.reset();
-        if (success) {
-          success.hidden = false;
-          success.focus && success.focus();
-        }
-      } else {
+      if (!ok) {
         if (error) {
           error.hidden = false;
           error.focus && error.focus();
         }
+        return;
+      }
+
+      // Envio real: usar endpoint configurado (prioriza back-end próprio)
+      const endpoint =
+        import.meta.env.VITE_CONTACT_ENDPOINT || // ex.: "/api/send-contact" (Vercel)
+        import.meta.env.VITE_FORMSPREE_ENDPOINT || // ex.: https://formspree.io/f/xxxxxx
+        '/api/send-contact';
+      if (!import.meta.env.VITE_CONTACT_ENDPOINT && typeof window !== 'undefined' && window.location.hostname.includes('localhost')) {
+        console.warn('[Contato] Sem VITE_CONTACT_ENDPOINT definido. Para evitar 404 no Vite, aponte para a URL publicada, por exemplo: VITE_CONTACT_ENDPOINT=https://SEU_APP.vercel.app/api/send-contact');
+      }
+      if (!endpoint) {
+        // Sem endpoint configurado, exibir erro claro
+        if (error) {
+          error.hidden = false;
+          error.textContent = 'Não foi possível enviar: configure o endpoint (VITE_FORMSPREE_ENDPOINT).';
+          error.focus && error.focus();
+        }
+        return;
+      }
+
+      try {
+        setSending(true);
+        const payload = {
+          nome: data.get('nome'),
+          email: data.get('email'),
+          telefone: data.get('telefone') || '',
+          assunto: data.get('assunto') || 'Contato',
+          mensagem: data.get('mensagem'),
+          _subject: `Contato via site • ${data.get('assunto') || 'Contato'}`,
+          _replyto: data.get('email'),
+        };
+        const resp = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (resp.ok) {
+          form.reset();
+          if (success) {
+            success.hidden = false;
+            success.textContent = 'Mensagem enviada com sucesso! Entraremos em contato.';
+            success.focus && success.focus();
+          }
+        } else {
+          const txt = await resp.text().catch(() => '');
+          if (error) {
+            error.hidden = false;
+            // Mensagens mais claras por status
+            let base = `Não foi possível enviar sua mensagem (status ${resp.status}). Tente novamente em instantes.`;
+            // Dica específica para ambiente local sem função /api
+            if (resp.status === 404 && typeof window !== 'undefined' && window.location.hostname.includes('localhost')) {
+              base += ' Dica: para testar localmente a rota /api, rode o projeto com "vercel dev" (ou aponte VITE_CONTACT_ENDPOINT para um endpoint válido).';
+            }
+            error.textContent = base + (txt ? ` Detalhes: ${txt}` : '');
+            error.focus && error.focus();
+          }
+        }
+      } catch {
+        if (error) {
+          error.hidden = false;
+          error.textContent = 'Falha de rede ao enviar sua mensagem. Verifique sua conexão e tente novamente.';
+          error.focus && error.focus();
+        }
+      } finally {
+        setSending(false);
       }
     };
     form.addEventListener('submit', onSubmit);
@@ -177,7 +239,7 @@ export default function Contato() {
                   <input type="checkbox" id="lgpd" name="lgpd" required />
                   <span>
                     Aceito o tratamento dos dados conforme{' '}
-                    <a href="/pdfs/politica_de_privacidade_greenline.pdf" target="_blank" style={{ color: 'var(--acc)', textDecoration: 'underline' }}>
+                    <a href={politicaPrivacidade} target="_blank" style={{ color: 'var(--acc)', textDecoration: 'underline' }}>
                       política de privacidade
                     </a>
                     .
@@ -186,8 +248,8 @@ export default function Contato() {
                 <span className="error" data-error-for="lgpd"></span>
               </div>
 
-              <button type="submit" className="btn primary full">
-                Enviar Mensagem
+              <button type="submit" className="btn primary full" disabled={sending} aria-busy={sending}>
+                {sending ? 'Enviando…' : 'Enviar Mensagem'}
               </button>
               <p className="small" style={{ margin: '12px 0 0', color: 'var(--muted)' }}>
                 Utilizamos suas informações apenas para responder a esta solicitação.

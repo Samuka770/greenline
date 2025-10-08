@@ -1,6 +1,9 @@
 import '../styles/credito-de-carbono.css';
 import arvoreVidroMao from '../img/arvore-vidro-mao.png';
-import ComparisonFigure from '../components/ComparisonFigure.jsx';
+import { lazy, Suspense } from 'react';
+import LoadingScreen from '../components/LoadingScreen.jsx';
+const ComparisonFigure = lazy(() => import('../components/ComparisonFigure.jsx'));
+import { Link } from 'react-router-dom';
 
 export default function CreditoCarbono() {
   return (
@@ -19,12 +22,14 @@ export default function CreditoCarbono() {
               <li>Dados geoespaciais e modelos proprietários</li>
             </ul>
             <div className="actions">
-              <a className="btn primary" href="/contato">Fale conosco</a>
-              <a className="btn" href="/apresentacao">Ver apresentação</a>
+              <Link className="btn primary" to="/contato">Fale conosco</Link>
+              <Link className="btn" to="/apresentacao">Ver apresentação</Link>
             </div>
           </div>
           <div className="hero-media">
-            <ComparisonFigure />
+            <Suspense fallback={<LoadingScreen label="Carregando comparação" /> }>
+              <ComparisonFigure />
+            </Suspense>
           </div>
         </div>
         <div className="hero-bottom-wave" aria-hidden="true"></div>
@@ -61,7 +66,7 @@ export default function CreditoCarbono() {
         <div className="inner split enhanced">
           <div className="split-media">
             <div className="media-frame angled">
-              <img src={arvoreVidroMao} alt="Ilustração de créditos de carbono" />
+              <img src={arvoreVidroMao} alt="Ilustração de créditos de carbono" loading="lazy" decoding="async" />
             </div>
           </div>
           <div className="split-copy">
@@ -126,7 +131,7 @@ export default function CreditoCarbono() {
           <h2 id="participar" className="section-title">Pronto para acelerar sua descarbonização?</h2>
           <p className="lead">Conecte-se com a Greenline para estruturar uma estratégia climática robusta com créditos de alta integridade.</p>
           <div className="actions">
-            <a className="btn-ghost" href="/contato">Falar com a Greenline</a>
+            <Link className="btn-ghost" to="/contato">Falar com a Greenline</Link>
           </div>
         </div>
       </section>

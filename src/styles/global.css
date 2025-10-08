@@ -1,5 +1,4 @@
-/* Copied and adapted from original global.css */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+/* Fonts loaded via index.html for performance (preconnect), not via @import */
 
 /* Replace relative asset paths to public */
 /* BEGIN original content */
@@ -7,18 +6,26 @@
 :root{
   /* Shared container width to keep navbar and page sections perfectly aligned */
   --container-w: min(1080px, 92vw);
-  --bg:#0b2012;
-  --card:#0f1a14;
-  --txt:#e5e7eb;
-  --muted:#93b2a3;
-  --acc0:#106925;
-  --acc:#2bc164;
-  --acc-2:#a7f3d0;
+  /* Unified palette */
+  --gray: #787878ff;
+  --office-green: #136e12ff;
+  --satin-sheen-gold: #ac991aff;
+  --forest-green: #17a010ff;
+  --night: #021100ff;
+
+  /* Theming mapped to palette */
+  --bg: var(--night);
+  --card: color-mix(in oklab, var(--night) 88%, black 12%);
+  --txt: #e5e7eb;
+  --muted: color-mix(in oklab, var(--gray) 55%, #cfe3ff 25%);
+  --acc0: var(--office-green);
+  --acc: var(--forest-green);
+  --acc-2: color-mix(in oklab, var(--satin-sheen-gold) 55%, #e9e2c2 45%);
   --radius:16px;
   --earth-700:#1f471a;
   --earth-600:#397438;
   --earth-500:#6ea472;
-  --forest-grad: linear-gradient(120deg, var(--acc) 0%, #2ea37a 55%, var(--earth-600) 72%, var(--earth-700) 100%);
+  --forest-grad: linear-gradient(120deg, var(--acc) 0%, color-mix(in oklab, var(--acc) 65%, var(--office-green)) 55%, var(--earth-600) 72%, var(--earth-700) 100%);
   --bp-xs:480px; /* telefones pequenos */
   --bp-sm:600px; /* telefones grandes */
   --bp-md:768px; /* tablets verticais */
@@ -32,7 +39,7 @@ body{
   min-height:100vh;
   display:flex;
   /* permitir rolagem principal e evitar scroll interno em painéis */
-  overflow-y: auto;
+  overflow: hidden;
   flex-direction:column;
   /* Ensure full-width layout: override align-items from Vite's index.css (place-items:center) */
   align-items: stretch;
@@ -43,8 +50,8 @@ body{
 #root { width: 100%; }
 
 /* Navigation and reveal styles - truncated copy to keep size reasonable */
-.nav-wrap{background:transparent;position:sticky;top:0;z-index:50;overflow:hidden}
-.navbar{position:relative;margin:12px auto;width:var(--container-w);border-radius:var(--radius);background:color-mix(in oklab,var(--card) 88%,transparent);box-shadow:0 5px 15px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.04);display:flex;align-items:center;gap:14px}
+.nav-wrap{background:transparent;position:sticky;top:0;z-index:60;overflow:visible}
+.navbar{position:relative;margin:12px auto;width:var(--container-w);border-radius:var(--radius);background:color-mix(in oklab,var(--card) 88%,transparent);box-shadow:0 5px 15px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.04);display:flex;align-items:center;gap:14px;z-index:62}
 .brand{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px}
 .logo-nav{height:80px}
 nav{position:relative;display:flex;align-items:center;gap:6px;margin-left:auto}
@@ -53,12 +60,25 @@ nav{position:relative;display:flex;align-items:center;gap:6px;margin-left:auto}
 .indicator{position:absolute;inset:auto auto 0 0;height:3px;border-radius:3px;background:linear-gradient(90deg, var(--acc) 0%, var(--acc) 75%, color-mix(in oklab, var(--acc) 40%, var(--earth-600)) 100%);box-shadow:0 0 12px color-mix(in oklab, var(--acc) 80%, var(--earth-600) 20%);transform:translateX(0);width:0;opacity:0;transition:transform .35s cubic-bezier(.2,.8,.2,1),width .35s cubic-bezier(.2,.8,.2,1),opacity .3s ease;pointer-events:none}
 .ink{position:absolute;inset:0;border-radius:12px;background:radial-gradient(60px 28px at var(--x,50%) var(--y,50%),color-mix(in oklab,var(--acc) 10%,transparent),transparent 60%);opacity:0;transition:opacity .3s}
 .nav-link:hover .ink{opacity:.9}
-.hamb{display:none;margin-left:auto;padding:8px 10px;border-radius:12px;cursor:pointer;color:var(--muted)}
-.hamb:active{transform:scale(.97)}
-.mobile{display:none;overflow:hidden;width:var(--container-w);margin:0 auto;border-radius:0 0 var(--radius) var(--radius);background:color-mix(in oklab,var(--card) 88%,transparent)}
-.mobile nav{padding:10px}
-.mobile .nav-link{display:block}
-@media (max-width:840px){nav.desktop{display:none}.hamb{display:block}.mobile{display:block;max-height:0;transition:max-height .35s ease}.mobile.open{max-height:320px}}
+.hamb{display:none;margin-left:auto;padding:10px 8px;border-radius:12px;cursor:pointer;color:var(--muted);background:transparent;border:none;outline:0;flex-direction:column;gap:6px;align-items:center;justify-content:center;min-width:44px;min-height:44px}
+.hamb:active{transform:scale(.96)}
+.hamb .bar{display:block;width:24px;height:2px;background:#e7efe9;border-radius:2px;transition:background .25s ease;margin:4px 0}
+.hamb .bar:nth-child(1),
+.hamb .bar:nth-child(2),
+.hamb .bar:nth-child(3){opacity:1;transform:none}
+.mobile{display:none;overflow:auto;width:var(--container-w);margin:0 auto;border-radius:0 0 var(--radius) var(--radius);background:color-mix(in oklab,var(--card) 94%,transparent);backdrop-filter:saturate(1.1) blur(2px);border:1px solid rgba(255,255,255,.06);z-index:61;position:relative}
+.mobile nav{padding:12px;display:flex;flex-direction:column;gap:4px}
+.mobile .nav-link{display:block;padding:14px 12px;border-radius:10px;font-weight:600}
+@media (max-width:960px){
+  nav.desktop{display:none}
+  .hamb{display:flex}
+  .mobile{display:block;max-height:0;transition:max-height .35s ease, opacity .25s ease;opacity:.98}
+  .mobile.open{max-height:70vh;box-shadow:0 14px 32px -8px rgba(0,0,0,.55)}
+}
+.nav-overlay{position:fixed;inset:0;pointer-events:none;background:rgba(0,0,0,0);transition:background .25s ease;z-index:50}
+.nav-overlay.show{background:rgba(0,0,0,.28);pointer-events:auto}
+.nav-wrap.menu-opened .navbar{box-shadow:0 10px 28px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.05)}
+.menu-open{overflow:hidden}
 .navbar.scrolled{box-shadow:0 4px 16px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.06)}
 .navbar.scrolled::after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);pointer-events:none}
 .navbar.hidden{transform:translateY(-100%);transition:transform .5s ease}
@@ -79,8 +99,8 @@ section.card{background:var(--card);border:1px solid rgba(255,255,255,.06);borde
 .btn{cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;border:1px solid rgba(255,255,255,.06);background:var(--card);color:var(--txt);padding:16px 12px;border-radius:10px;font-weight:600}
 .btn.primary{background:var(--acc);color:var(--bg);border-color:var(--acc)}
 .btn.primary:hover{background:var(--acc-2)}
-.btn-ghost{ text-decoration: none; background: linear-gradient(120deg, #1a3a2a 0%, #10271b 100%); color: #fff; border: 1.5px solid rgba(43, 193, 100, 0.35); font-weight: 700; letter-spacing: 1px; box-shadow: 0 10px 20px rgba(32,57,57,0.25); padding: 20px 48px; font-size: 1.25rem; min-width: 240px; display: block; margin: 32px auto 0 auto; text-align: center; letter-spacing: 1.5px; transition: background 0.3s, color 0.2s, box-shadow 0.6s, filter 0.4s, transform 0.2s; border-radius: 18px; text-shadow: none; outline: none; cursor: pointer; position: relative; overflow: hidden; z-index: 1; background-size: 200% 200%; }
-.btn-ghost:hover{ background: linear-gradient(120deg, #1a3a2a 0%, #10271b 100%); color: #fff; border-color: rgba(43, 193, 100, 0.55); box-shadow: 0 0 16px 1px #34d39980, 0 0 2px 1px #a7f3d080; filter: drop-shadow(0 0 1px #34d37b80); transform: translateY(-2px) scale(1.04) }
+.btn-ghost{ text-decoration: none; background: linear-gradient(120deg, color-mix(in oklab, var(--night) 80%, black 20%) 0%, color-mix(in oklab, var(--night) 70%, var(--office-green) 30%) 100%); color: #fff; border: 1.5px solid color-mix(in oklab, var(--satin-sheen-gold) 45%, transparent); font-weight: 700; letter-spacing: 1px; box-shadow: 0 10px 20px rgba(32,57,57,0.25); padding: 20px 48px; font-size: 1.25rem; min-width: 240px; display: block; margin: 32px auto 0 auto; text-align: center; letter-spacing: 1.5px; transition: background 0.3s, color 0.2s, box-shadow 0.6s, filter 0.4s, transform 0.2s; border-radius: 18px; text-shadow: none; outline: none; cursor: pointer; position: relative; overflow: hidden; z-index: 1; background-size: 200% 200%; }
+.btn-ghost:hover{ background: linear-gradient(120deg, color-mix(in oklab, var(--night) 72%, var(--office-green) 28%), color-mix(in oklab, var(--night) 60%, var(--office-green) 40%)); color: #fff; border-color: color-mix(in oklab, var(--satin-sheen-gold) 65%, transparent); box-shadow: 0 0 16px 1px color-mix(in oklab, var(--forest-green) 40%, transparent), 0 0 2px 1px color-mix(in oklab, var(--satin-sheen-gold) 45%, transparent); filter: drop-shadow(0 0 1px color-mix(in oklab, var(--forest-green) 40%, transparent)); transform: translateY(-2px) scale(1.04) }
 
 /* Footer */
 .site-footer{ background:var(--card); color:#cbd5e1; margin:0; padding:0 }
@@ -119,13 +139,14 @@ body,html{overflow-x:hidden}
 }
 
 /* Evitar que elementos absolutamente posicionados (CTA) empurrem a largura */
-.projetos-cta, .hero .cta {left:50%; transform:translateX(-50%);} 
+.projetos-cta {left:50%; transform:translateX(-50%);} 
 
 /* Ajustes de navegação em telas muito pequenas */
 @media (max-width:480px){
   .navbar{margin:8px auto}
-  .logo-nav{height:64px}
-  .nav-link{padding:10px 10px}
+  .logo-nav{height:60px}
+  /* Increase tap targets inside mobile panel */
+  .mobile .nav-link{padding:16px 12px;font-size:1.02rem}
 }
 
 /* Melhorias footer responsivo */

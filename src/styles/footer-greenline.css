@@ -1,6 +1,8 @@
-.site-footer { background: var(--card); color: #cbd5e1; margin: 0; padding: 0; position: relative; z-index: 2; border-top: none }
+.site-footer { background: var(--card); color: var(--txt); margin: 0; padding: 0; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.05) }
 .footer-links { display: flex; gap: 18px; justify-content: center; margin: 18px 0 0 0 }
-.footer-links a { color: #cbd5e1; text-decoration: none; font-size: 16px; transition: color .2s }
-.footer-links a:hover { color: var(--acc) }
+.footer-links a { color: color-mix(in oklab, var(--txt) 78%, var(--muted)); text-decoration: none; font-size: 16px; transition: color .2s }
+.footer-links a:hover { color: var(--acc-2) }
+.footer-links a:focus { outline: 2px solid var(--acc); outline-offset: 2px }
+.footer-links a:active { color: var(--acc) }
 .footer-copyright { text-align: center; font-size: 13px; color: var(--muted); margin: 12px 0 8px 0 }
 @media (max-width: 600px) { .footer-links { flex-direction: column; gap: 8px; align-items: center } }

@@ -71,7 +71,7 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   transform-origin: center;
-  border: 1.5px solid rgba(43,193,100,0.4);
+  border: 1.5px solid color-mix(in oklab, var(--acc) 40%, transparent);
   transition: all 0.3s ease;
   bottom: -40px; /* Ajuste para melhor alinhamento */
 }
@@ -79,10 +79,10 @@
 .projetos-cta:hover {
   background: linear-gradient(120deg, #1a3a2a 0%, #10271b 100%);
   color: #fff;
-  box-shadow: 0 0 20px 2px #34d39980, 0 0 4px 1px #a7f3d080;
-  filter: drop-shadow(0 0 2px #34d37b80);
+  box-shadow: 0 0 20px 2px color-mix(in oklab, var(--acc) 60%, transparent), 0 0 4px 1px color-mix(in oklab, var(--acc-2) 40%, transparent);
+  filter: drop-shadow(0 0 2px color-mix(in oklab, var(--acc) 50%, transparent));
   transform: translate(-50%, -2px) scale(1.05);
-  border-color: rgba(43, 193, 100, 0.6);
+  border-color: color-mix(in oklab, var(--acc) 60%, transparent);
 }
 
 /* Metodologia section for Projetos */

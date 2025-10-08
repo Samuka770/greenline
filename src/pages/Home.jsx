@@ -1,5 +1,5 @@
 import '../styles/index.css';
-import logoBranco from '../img/logo-transparente-branco.png';
+import { Link } from 'react-router-dom';
 import videoValidacao from '../img/background-validacao.mp4';
 import logoGreensat from '../img/logo-greensat.png';
 
@@ -8,14 +8,18 @@ export default function Home() {
     <main>
       <section id="inicio" className="hero" role="region" aria-label="Destaque">
         <div className="hero-inner reveal">
-          <img className="logo-inicio" src={logoBranco} alt="Logotipo Greenline" />
-          <a className="cta" href="/sobre">Conheça a Greenline</a>
+          <img className="logo-inicio" src={logoGreensat} alt="Logo Greensat Technology" decoding="async" fetchpriority="high" />
+          <Link className="cta" to="/sobre">Conheça a Greenline</Link>
         </div>
       </section>
 
       <section className="metodologia-hero" role="region" aria-label="Metodologia">
-  <video className="metodologia-hero__video-bg" src={videoValidacao} autoPlay loop muted playsInline />
+  <video className="metodologia-hero__video-bg" src={videoValidacao} autoPlay loop muted playsInline preload="metadata" />
         <div className="metodologia-hero__inner reveal">
+          <div className="metodologia-hero__logo">
+            <img src={logoGreensat} alt="Logo Greensat Technology" />
+            <div className="metodologia-hero__brand"></div>
+          </div>
           <div className="metodologia-hero__content">
             <h2 className="metodologia-hero__title">
               Metodologia
@@ -34,10 +38,6 @@ export default function Home() {
             >
               VALIDAÇÃO
             </a>
-          </div>
-          <div className="metodologia-hero__logo">
-            <img src={logoGreensat} alt="Logo Greensat Technology" />
-            <div className="metodologia-hero__brand"></div>
           </div>
         </div>
       </section>

@@ -25,6 +25,7 @@ export default function Contato() {
       requiredFields.forEach((f) => setError(f, ''));
     }
     const onSubmit = async (e) => {
+      // vamos prevenir por padrão e, se estiver tudo ok, submeter manualmente
       e.preventDefault();
       clearErrors();
       if (success) success.hidden = true;
@@ -54,61 +55,82 @@ export default function Contato() {
         }
         return;
       }
-
-      // Envio real: usar endpoint configurado (prioriza back-end próprio)
-      const endpoint =
-        import.meta.env.VITE_CONTACT_ENDPOINT || // ex.: "/api/send-contact" (Vercel)
-        import.meta.env.VITE_FORMSPREE_ENDPOINT || // ex.: https://formspree.io/f/xxxxxx
-        '/api/send-contact';
-      if (!import.meta.env.VITE_CONTACT_ENDPOINT && typeof window !== 'undefined' && window.location.hostname.includes('localhost')) {
-        console.warn('[Contato] Sem VITE_CONTACT_ENDPOINT definido. Para evitar 404 no Vite, aponte para a URL publicada, por exemplo: VITE_CONTACT_ENDPOINT=https://SEU_APP.vercel.app/api/send-contact');
-      }
-      if (!endpoint) {
-        // Sem endpoint configurado, exibir erro claro
-        if (error) {
-          error.hidden = false;
-          error.textContent = 'Não foi possível enviar: configure o endpoint (VITE_FORMSPREE_ENDPOINT).';
-          error.focus && error.focus();
-        }
-        return;
-      }
-
+      // Enviar via AJAX para o FormSubmit (sem sair da página)
       try {
         setSending(true);
+        // Cabeçalhos do e-mail
+        const assunto = (data.get('assunto') || 'Contato').toString();
+        const emailVal = (data.get('email') || '').toString();
+        const subjectInput = form.querySelector('input[name="_subject"]');
+        if (subjectInput) subjectInput.value = `Contato via site • ${assunto}`;
+        const replyTo = form.querySelector('input[name="_replyto"]');
+        if (replyTo) replyTo.value = emailVal;
+
+        // Montar payload (sem LGPD)
         const payload = {
           nome: data.get('nome'),
           email: data.get('email'),
           telefone: data.get('telefone') || '',
           assunto: data.get('assunto') || 'Contato',
           mensagem: data.get('mensagem'),
-          _subject: `Contato via site • ${data.get('assunto') || 'Contato'}`,
-          _replyto: data.get('email'),
+          _subject: `Contato via site • ${assunto}`,
+          _replyto: emailVal,
+          _template: 'table',
+          _captcha: 'false',
+          _honey: data.get('_honey') || ''
         };
-        const resp = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-        if (resp.ok) {
+
+        // Tenta enviar via endpoint AJAX (JSON)
+        let ok = false;
+        try {
+          const resp = await fetch('https://formsubmit.co/ajax/info@greenlinewy.com', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          ok = resp.ok;
+          if (!ok) {
+            const txt = await resp.text().catch(() => '');
+            if (txt) console.warn('[Contato] FormSubmit AJAX falhou:', txt);
+          }
+        } catch (err) {
+          console.warn('[Contato] Erro na chamada AJAX do FormSubmit:', err);
+        }
+
+        // Fallback: envia como form-urlencoded com no-cors (sem sair da página)
+        if (!ok) {
+          const urlParams = new URLSearchParams();
+          urlParams.set('nome', payload.nome ?? '');
+          urlParams.set('email', payload.email ?? '');
+          urlParams.set('telefone', payload.telefone ?? '');
+          urlParams.set('assunto', payload.assunto ?? 'Contato');
+          urlParams.set('mensagem', payload.mensagem ?? '');
+          urlParams.set('_subject', payload._subject);
+          urlParams.set('_replyto', payload._replyto);
+          urlParams.set('_template', payload._template);
+          urlParams.set('_captcha', payload._captcha);
+          if (payload._honey) urlParams.set('_honey', payload._honey);
+
+          await fetch('https://formsubmit.co/info@greenlinewy.com', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+            body: urlParams.toString()
+          });
+          ok = true; // resposta será opaca; assumimos sucesso
+        }
+
+        if (ok) {
           form.reset();
           if (success) {
             success.hidden = false;
             success.textContent = 'Mensagem enviada com sucesso! Entraremos em contato.';
             success.focus && success.focus();
           }
-        } else {
-          const txt = await resp.text().catch(() => '');
-          if (error) {
-            error.hidden = false;
-            // Mensagens mais claras por status
-            let base = `Não foi possível enviar sua mensagem (status ${resp.status}). Tente novamente em instantes.`;
-            // Dica específica para ambiente local sem função /api
-            if (resp.status === 404 && typeof window !== 'undefined' && window.location.hostname.includes('localhost')) {
-              base += ' Dica: para testar localmente a rota /api, rode o projeto com "vercel dev" (ou aponte VITE_CONTACT_ENDPOINT para um endpoint válido).';
-            }
-            error.textContent = base + (txt ? ` Detalhes: ${txt}` : '');
-            error.focus && error.focus();
-          }
+        } else if (error) {
+          error.hidden = false;
+          error.textContent = 'Não foi possível enviar sua mensagem no momento. Tente novamente em instantes.';
+          error.focus && error.focus();
         }
       } catch {
         if (error) {
@@ -189,11 +211,34 @@ export default function Contato() {
           </div>
 
           <div className="contato-form-wrapper" aria-labelledby="form-title">
-            <form className="contato-form" id="formContato" ref={formRef} noValidate>
+            <form
+              className="contato-form"
+              id="formContato"
+              ref={formRef}
+              noValidate
+              action="https://formsubmit.co/info@greenlinewy.com"
+              method="POST"
+            >
               <h2 id="form-title" className="form-title">
                 Envie sua Mensagem
               </h2>
               <p className="form-desc">Preencha os campos obrigatórios. *</p>
+              {/* Campos ocultos para o FormSubmit */}
+              <input type="hidden" name="_subject" value="" data-dynamic="subject" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              {/* Honeypot anti-spam */}
+              <input
+                type="text"
+                name="_honey"
+                tabIndex="-1"
+                autoComplete="off"
+                style={{ position: 'absolute', left: '-5000px' }}
+                aria-hidden="true"
+              />
+              {/* Removido campo oculto "name" para evitar duplicidade com o campo "nome" */}
+              {/* Opcional: força Reply-To */}
+              <input type="hidden" name="_replyto" value="" />
 
               <div className="field-group">
                 <label htmlFor="nome">Nome *</label>

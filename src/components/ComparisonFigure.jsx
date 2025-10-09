@@ -7,7 +7,7 @@ export default function ComparisonFigure() {
       <header className="comparison-header">
         <img className="comparison-logo-left" src={logoGreensat} alt="Greensat Technology" />
         <h3 id="cc-compare-title" className="comparison-title">Comparativo</h3>
-        <div className="comparison-redd" aria-label="REDD"><strong>REDD</strong></div>
+        <div className="comparison-redd" aria-label="REDD"><strong>REDD+</strong></div>
       </header>
       <div className="comparison-table" role="table" aria-label="Comparativo Greenline vs REDD">
         {rows.map((r, i) => (

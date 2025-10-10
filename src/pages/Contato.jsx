@@ -216,7 +216,6 @@ export default function Contato() {
               id="formContato"
               ref={formRef}
               noValidate
-              action="https://formsubmit.co/info@greenlinewy.com"
               method="POST"
             >
               <h2 id="form-title" className="form-title">

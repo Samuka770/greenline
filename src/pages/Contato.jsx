@@ -184,8 +184,8 @@ export default function Contato() {
                 <div>
                   <div style={{ fontWeight: 700, color: 'var(--txt)', fontSize: '1.01rem' }}>E-mail</div>
                   <div style={{ color: 'var(--acc)', fontSize: '.98rem' }}>
-                    <a href="mailto:contato@greenline.com" className="link" style={{ color: 'var(--acc)' }}>
-                      contato@greenline.com
+                    <a href="mailto:info@greenlinewy.com" className="link" style={{ color: 'var(--acc)' }}>
+                      info@greenlinewy.com
                     </a>
                   </div>
                 </div>

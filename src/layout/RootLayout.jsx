@@ -315,6 +315,7 @@ export default function RootLayout() {
       <footer className="site-footer reveal" role="contentinfo">
         <nav className="footer-links" aria-label="Links do rodapé">
           <NavLink to="/">Início</NavLink>
+          <NavLink to="/projetos">Projetos</NavLink>
           <NavLink to="/credito-de-carbono">Crédito de Carbono</NavLink>
           <NavLink to="/sobre">Sobre</NavLink>
           <NavLink to="/contato">Contato</NavLink>

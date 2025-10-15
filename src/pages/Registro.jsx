@@ -1,4 +1,6 @@
 import { useMemo } from 'react';
+import videoFallback from '../img/background-validacao.mp4';
+import logoGreensat from '../img/logo-greensat.png';
 import '../styles/registro.css';
 import projects from '../data/projects.json';
 
@@ -46,6 +48,24 @@ export default function Registro(){
 
 	return (
 		<main className="registro-main">
+			{/* Introdução / Metodologia (movida de Projetos.jsx) - abaixo do navbar */}
+			<section className="projetos-metodologia" role="region" aria-label="Introdução">
+				<video className="projetos-metodologia__video-bg" src={videoFallback} autoPlay loop muted playsInline />
+				<div className="projetos-metodologia__inner reveal">
+					<div className="projetos-metodologia__content">
+						<h2 className="projetos-metodologia__title">Conheça as áreas<br /><span>em preservação pela Greenline</span></h2>
+						<p className="projetos-metodologia__desc">A Greenline monitora <strong>mais de 50 áreas</strong> em preservação distribuídas por todo o Brasil, utilizando <strong>tecnologia satelital</strong> e <strong>sistemas de monitoramento contínuo</strong> para garantir a conservação e integridade florestal.</p>
+						<div className="projetos-stats">
+							<div className="projetos-stat"><div className="projetos-stat-number">50+</div><div className="projetos-stat-label">Áreas Monitoradas</div></div>
+							<div className="projetos-stat"><div className="projetos-stat-number">12</div><div className="projetos-stat-label">Estados</div></div>
+						</div>
+					</div>
+					<div className="projetos-metodologia__logo">
+						<img src={logoGreensat} alt="Logo Greensat Technology" />
+						<div className="metodologia-hero__brand" />
+					</div>
+				</div>
+			</section>
 			<section className="registro-hero" aria-label="Registro Público">
 				<div className="registro-hero-inner">
 					<h1 className="registro-title">Registro Público de Projetos</h1>
@@ -92,15 +112,7 @@ export default function Registro(){
 								</tr>
 							))}
 						</tbody>
-						<tfoot>
-							<tr className="totals-row">
-								<td colSpan={5}>Total</td>
-								<td>{areas.reduce((acc,a)=>acc+a.creditsRaw,0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>
-								<td colSpan={2}>{areas.length} projetos</td>
-							</tr>
-						</tfoot>
 					</table>
-					<p className="registry-footnote">Metodologia aplicada: {METHODOLOGY}.</p>
 				</div>
 			</section>
 		</main>

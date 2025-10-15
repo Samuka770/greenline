@@ -40,10 +40,12 @@ body { overflow-x: hidden;}
 .hero-media{ position:relative; border-radius:22px; overflow:hidden; display:flex; align-items:center; justify-content:center; min-height: clamp(720px, 78vh, 1200px) }
 .hero-img{ width:100%; height:100%; max-width:100%; max-height:100%; object-fit:cover; object-position:center; border-radius:22px; box-shadow:0 16px 40px rgba(0,0,0,.45) }
 @media (max-width: 880px){
-	.hero-split{ grid-template-columns: 1fr; min-height: unset }
+	.hero-split{ grid-template-columns: 1fr; min-height: unset; overflow: visible }
 	/* Place copy first and media second on mobile, and let media grow */
-	.hero-media{ max-height: none; min-height: 0 }
+	.hero-media{ max-height: none; min-height: 0; overflow: visible }
 	.hero-bullets{ grid-template-columns: 1fr }
+	/* Avoid clipping caused by rotated frame on very small screens */
+	.media-frame.angled{ transform:none }
 }
 
 .features-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; text-align:center }
@@ -76,9 +78,13 @@ body { overflow-x: hidden;}
 
 .hero-pane{ --hero-min: clamp(760px, 92vh, 1080px); position:relative; overflow:hidden; display:flex; align-items:stretch; padding:0; min-height: var(--hero-min) }
 .hero-pane.hero-split{
-	/* Force hero to be exactly viewport height (minus safe area if any) */
+	/* Use modern viewport units with fallbacks to avoid iOS Safari toolbar jumps */
 	min-height: 100vh;
+	min-height: 100svh;
+	min-height: 100dvh;
 	height: 100vh;
+	height: 100svh;
+	height: 100dvh;
 }
 .hero-pane.hero-split .hero-grid{
 	/* Further reduced top padding (roughly half of previous) to raise figure */
@@ -99,6 +105,7 @@ body { overflow-x: hidden;}
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	overflow: visible; /* ensure child figure can extend without being clipped */
 }
 /* Prevent grid items from overflowing their columns */
 .hero-pane.hero-split .hero-copy,
@@ -107,7 +114,19 @@ body { overflow-x: hidden;}
 .hero-pane.hero-split .hero-media .comparison-card{ width: 100%; max-width: 680px }
 /* Comparison figure constrained height */
 /* Condensed comparison card (no internal scroll) */
-.hero-pane.hero-split .comparison-card{ height:auto; max-height:88vh; display:flex; flex-direction:column; font-size:clamp(12.5px,1.02vw,15.5px); line-height:1.8; }
+.hero-pane.hero-split .comparison-card{
+	position: relative;
+	z-index: 2; /* ensure it stays above decorative waves on iOS */
+	height:auto;
+	/* dvh/svh fallbacks to prevent clipping under Safari UI */
+	max-height: 88vh;
+	max-height: 88svh;
+	max-height: 88dvh;
+	display:flex;
+	flex-direction:column;
+	font-size:clamp(12.5px,1.02vw,15.5px);
+	line-height:1.8;
+}
 .hero-pane.hero-split .comparison-header{ flex:0 0 auto; padding:clamp(6px,0.9vh,11px) clamp(12px,1.1vw,18px); gap:8px; }
 .hero-pane.hero-split .comparison-logo-left{ height:clamp(44px,5.8vh,60px); }
 .hero-pane.hero-split .comparison-title{ font-size:clamp(18px,1.8vw,23px); }
@@ -145,7 +164,11 @@ body { overflow-x: hidden;}
 		row-gap: clamp(16px,3.5vh,28px);
 	}
 	/* Allow full content of the comparison card on mobile */
-	.hero-pane.hero-split .comparison-card{ max-height:none; height:auto; overflow:visible; }
+	.hero-pane.hero-split .comparison-card{
+		max-height:none;
+		height:auto;
+		overflow:visible; /* override base hidden to avoid iOS clipping */
+	}
 }
 /* Narrow desktop/tablet landscape: avoid clipping by letting the hero expand and the card grow */
 @media (max-width: 1080px) and (min-width: 881px){
@@ -195,8 +218,11 @@ body { overflow-x: hidden;}
 	font-size: clamp(12px, 1.0vw, 15px);
 	padding: 0;
 	border-radius: 22px;
-	overflow: hidden; /* fallback */
-	overflow: clip;   /* modern */
+	/* Avoid overflow: clip on iOS Safari to prevent paint bugs with rounded corners. */
+	overflow: hidden;
+	/* Promote to its own layer to reduce flicker/clipping on iOS */
+	transform: translateZ(0);
+	will-change: transform;
 	box-shadow: 0 18px 40px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,0.06);
 	border: 1px solid rgba(255,255,255,0.10);
 	max-width: min(740px, 100%);

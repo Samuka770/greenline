@@ -1,16 +1,17 @@
-import { StrictMode, Suspense, lazy } from 'react'
+import { StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import LoadingScreen from './components/LoadingScreen.jsx'
-const RootLayout = lazy(() => import('./layout/RootLayout.jsx'))
-const Home = lazy(() => import('./pages/Home.jsx'))
-const CreditoCarbono = lazy(() => import('./pages/CreditoCarbono.jsx'))
-const Sobre = lazy(() => import('./pages/Sobre.jsx'))
-const Contato = lazy(() => import('./pages/Contato.jsx'))
-const Apresentacao = lazy(() => import('./pages/Apresentacao.jsx'))
-const Projetos = lazy(() => import('./pages/Projetos.jsx'))
-const Registros = lazy(() => import('./pages/Registro.jsx'))
+import lazyWithRetry from './utils/lazyWithRetry.js'
+const RootLayout = lazyWithRetry(() => import('./layout/RootLayout.jsx'))
+const Home = lazyWithRetry(() => import('./pages/Home.jsx'))
+const CreditoCarbono = lazyWithRetry(() => import('./pages/CreditoCarbono.jsx'))
+const Sobre = lazyWithRetry(() => import('./pages/Sobre.jsx'))
+const Contato = lazyWithRetry(() => import('./pages/Contato.jsx'))
+const Apresentacao = lazyWithRetry(() => import('./pages/Apresentacao.jsx'))
+const Projetos = lazyWithRetry(() => import('./pages/Projetos.jsx'))
+const Registros = lazyWithRetry(() => import('./pages/Registro.jsx'))
 
 const router = createBrowserRouter([
   {

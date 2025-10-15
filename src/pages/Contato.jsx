@@ -80,21 +80,40 @@ export default function Contato() {
           _honey: data.get('_honey') || ''
         };
 
-        // Tenta enviar via endpoint AJAX (JSON)
+        // Primeiro: tenta via função serverless no Netlify (sem CORS)
         let ok = false;
         try {
-          const resp = await fetch('https://formsubmit.co/ajax/info@greenlinewy.com', {
+          const fnResp = await fetch('/.netlify/functions/send-contact', {
             method: 'POST',
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
-          ok = resp.ok;
-          if (!ok) {
-            const txt = await resp.text().catch(() => '');
-            if (txt) console.warn('[Contato] FormSubmit AJAX falhou:', txt);
+          if (fnResp.ok) {
+            ok = true;
+          } else {
+            const txt = await fnResp.text().catch(() => '');
+            console.warn('[Contato] Função Netlify falhou:', txt);
           }
         } catch (err) {
-          console.warn('[Contato] Erro na chamada AJAX do FormSubmit:', err);
+          console.warn('[Contato] Erro chamando função Netlify:', err);
+        }
+
+        // Segundo: tenta enviar via endpoint AJAX (JSON) do FormSubmit
+        if (!ok) {
+          try {
+            const resp = await fetch('https://formsubmit.co/ajax/info@greenlinewy.com', {
+              method: 'POST',
+              headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            ok = resp.ok;
+            if (!ok) {
+              const txt = await resp.text().catch(() => '');
+              if (txt) console.warn('[Contato] FormSubmit AJAX falhou:', txt);
+            }
+          } catch (err) {
+            console.warn('[Contato] Erro na chamada AJAX do FormSubmit:', err);
+          }
         }
 
         // Fallback: envia como form-urlencoded com no-cors (sem sair da página)
